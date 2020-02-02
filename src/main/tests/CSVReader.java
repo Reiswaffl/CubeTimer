@@ -45,6 +45,7 @@ public class CSVReader {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             while((line = reader.readLine()) != null){
                 String[] arr = line.split(",");
+                ret.add(new Solve(arr[0],arr[1].replace("\"",""),arr[2],arr[3],arr[arr.length-1].replace("\"","")));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,11 +53,15 @@ public class CSVReader {
         return ret;
     }
     public static void main(String[] args) {
-        String csvFile = "data/testData.csv";
+        String csvFile = "data/export (1).csv";
         CSVReader reader = new CSVReader();
-        List<String> list = reader.read(csvFile);
-        for(String s : list)
-            System.out.println(s);
+        List<Solve> list = reader.readSolveForm(csvFile);
+        System.out.println(list.get(0).getPuzzle());
+        System.out.println(list.get(0).getSpecializations());
+        System.out.println(list.get(0).getSolveTime());
+        System.out.println(list.get(0).getDate());
+        System.out.println(list.get(0).getScramble());
+        System.out.println(list.get(0).toString());
     }
 
 }

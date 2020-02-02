@@ -36,4 +36,9 @@ public class Solve {
     public String getSpecializations() {
         return specializations;
     }
+
+    @Override
+    public String toString(){
+        return solveTime +" : "+ date;
+    }
 }
