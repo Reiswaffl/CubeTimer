@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <puzzle id="2x2x2">
+    </puzzle>
+    <puzzle id="3x3x3">
+        <specializations id="CFOP">data/export (1).csv</specializations>
+        <specializations id="1">data/export (1).csv</specializations>
+        <specializations id="2">data/export (1).csv</specializations>
+        <specializations id="3">data/export (1).csv</specializations>
+    </puzzle>
+</root>
