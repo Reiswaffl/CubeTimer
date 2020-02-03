@@ -2,9 +2,7 @@ package main.dataInterfaces;
 
 
 import main.dataTransfer.Solve;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
