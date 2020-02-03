@@ -1,6 +1,5 @@
 package main.dataTransfer;
 
-import java.net.Socket;
 
 public class Solve {
     private String puzzle;
