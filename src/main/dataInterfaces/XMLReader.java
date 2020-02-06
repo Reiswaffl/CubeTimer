@@ -10,14 +10,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 public class XMLReader {
     private Document doc;
@@ -29,139 +28,58 @@ public class XMLReader {
         path = "data/pathData.xml";
     }
 
-    public List<String> getPuzzles() {
-        List<String> ret = new LinkedList<>();
-        NodeList nList = getNodes();
-        for (int i = 0; i < nList.getLength(); i++) {
-            if (nList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) nList.item(i);
-                ret.add(element.getAttribute("id"));
-            }
-        }
-        return ret;
+    /**
+     * @param type type of the Puzzle -> for example 2x2x2 or 4x4x4
+     * @param spec specialization of the Puzzle -> for example CFOP or Yau-Method
+     * @param path path where the *.csv-File with the times is saves
+     * @throws TransformerException
+     */
+    public void write(String type, String spec, String path) throws TransformerException {
+        // get root Node
+        Node parent = doc.getElementsByTagName("root").item(0);
+        // Create new Element
+        Element element = doc.createElement("puzzle");
+        element.setAttribute("type", type);
+        element.setAttribute("spec",spec);
+        element.setTextContent(path);
+        parent.appendChild(element);
+        // Write into file
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File(this.path));
+        transformer.transform(source, result);
+
     }
 
-    public List<String> getSpecializations(String puzzle) {
-        List<String> ret = new LinkedList<>();
-        NodeList nList = getNodes();
-        for (int i = 0; i < nList.getLength(); i++) {
-            if (nList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) nList.item(i);
-                // find puzzle
-                if (element.getAttribute("id").equals(puzzle)) {
-                    NodeList specs = nList.item(i).getChildNodes();
-                    // list specs
-                    for (int j = 0; j < specs.getLength(); j++) {
-                        if (specs.item(j).getNodeType() == Node.ELEMENT_NODE) {
-                            Element specElement = (Element) specs.item(j);
-                            if (specElement != null)
-                                ret.add(specElement.getAttribute("id"));
-                        }
-                    }
-                    return ret;
-                }
+    /**
+     * @param type type of the Puzzle
+     * @param spec specialization of the Puzzle
+     * @return path where the *.csv-File with the times is saved
+     */
+    public String getPath(String type, String spec){
+        // Get Puzzle-Nodes
+        NodeList nList = doc.getElementsByTagName("puzzle");
+        for(int i = 0; i < nList.getLength(); i++){
+            Node n = nList.item(i);
+            // Check if ELEMENT_NDOE
+            if(n.getNodeType() == Node.ELEMENT_NODE){
+                Element e = (Element) n;
+                // Check if its the searched Node
+                if(e.getAttribute(type).equals(type) && e.getAttribute(spec).equals(spec))
+                    return e.getTextContent();
             }
         }
-        return ret;
-    }
-
-    public String getPath(String puzzle, String spec) {
-        NodeList nList = getNodes();
-
-        for (int i = 0; i < nList.getLength(); i++) {
-            if (nList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) nList.item(i);
-                // find puzzle
-                if (element.getAttribute("id").equals(puzzle)) {
-                    NodeList specs = nList.item(i).getChildNodes();
-                    // find specs
-                    for (int j = 0; j < specs.getLength(); j++) {
-                        if (specs.item(j).getNodeType() == Node.ELEMENT_NODE) {
-                            Element specElement = (Element) specs.item(j);
-                            // return path
-                            if (specElement != null)
-                                if (specElement.getAttribute("id").equals(spec))
-                                    return specElement.getTextContent();
-
-                        }
-                    }
-                }
-            }
-        }
+        // when Node is not there return null
         return null;
     }
 
-    public void writePuzzle(String puzzle) throws TransformerException {
-        NodeList nList = doc.getElementsByTagName("root");
-        for (int i = 0; i < nList.getLength(); i++)
-            if (nList.item(i).getNodeType() == Node.ELEMENT_NODE)
-                write(nList.item(i), "puzzle", puzzle);
-    }
-
-    public void writeSpec(String puzzle, String spec) throws TransformerException {
-        NodeList nList = doc.getElementsByTagName("puzzle");
-        for(int i = 0; i < nList.getLength(); i++)
-            if(nList.item(i).getNodeType() == Node.ELEMENT_NODE){
-                Element element = (Element) nList.item(i);
-                if(element.getAttribute("id").equals(puzzle)) {
-                    write(nList.item(i), "specializations", spec);
-                    break;
-                }
-            }
-
-    }
-
-    public void writePath(String puzzle, String spec, String path) throws TransformerException {
-        NodeList nList = doc.getElementsByTagName("puzzle");
-        loop : for(int i = 0; i < nList.getLength(); i++)
-            if(nList.item(i).getNodeType() == Node.ELEMENT_NODE){
-                Element element = (Element) nList.item(i);
-                if(element.getAttribute("id").equals(puzzle)) {
-                    NodeList specs = nList.item(i).getChildNodes();
-                    for(int j = 0; j < specs.getLength(); j++){
-                        if(specs.item(j).getNodeType() == Node.ELEMENT_NODE){
-                            Element specElement = (Element) specs.item(j);
-                            if(specElement.getAttribute("id").equals(spec)) {
-                                writeText(specs.item(j), spec, path);
-                                break loop;
-                            }
-                        }
-                    }
-                }
-            }
-    }
-
-    private void write(Node parent, String tag, String id) throws TransformerException {
-        Element element = doc.createElement(tag);
-        element.setAttribute("id", id);
-        parent.appendChild(element);
-
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File(path));
-        transformer.transform(source, result);
-    }
-
-    private void writeText(Node parent, String tag, String content) throws TransformerException {
-        Element element = (Element) parent;
-        element.setTextContent(content);
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File(path));
-        transformer.transform(source, result);
-    }
     public void update() throws ParserConfigurationException, IOException, SAXException {
+        // Reload the file
         File file = new File(path);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = factory.newDocumentBuilder();
         doc = dBuilder.parse(file);
     }
-
-    private NodeList getNodes() {
-        return doc.getElementsByTagName("puzzle");
-    }
-
 
 }

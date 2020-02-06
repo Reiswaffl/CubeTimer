@@ -19,9 +19,9 @@ public class CSVReader {
 
 
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException, TransformerException {
-        main.dataInterfaces.CSVReader reader = new main.dataInterfaces.CSVReader();
+
         XMLReader reader1 = new XMLReader();
         reader1.update();
-        reader1.writePath("3x3x3","CFOP","path");
+        reader1.write("4x4x4","Yau-Method","newPath");
     }
 }
