@@ -26,7 +26,7 @@ public class CSVReader {
         writer.close();
     }
 
-    /**
+   /**
      * @param path where the file is found
      * @return List of all solve-data in the direction the path leads to
      * @throws IOException

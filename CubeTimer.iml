@@ -8,4 +8,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="designer2.settings">
+    <option name="serverIp" value="192.168.178.67" />
+    <option name="serverPort" value="65372" />
+  </component>
 </module>
