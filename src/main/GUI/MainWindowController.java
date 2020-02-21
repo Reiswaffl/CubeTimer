@@ -1,9 +1,10 @@
 package main.GUI;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class MainWindowController {
+public class MainWindowController  {
 
     public GUI gui;
     @FXML  Label solvingTime;
@@ -14,18 +15,5 @@ public class MainWindowController {
 
     @FXML
     public void initialize(){
-        Refresher f = new Refresher(solvingTime);
-        f.start();
-    }
-
-    static class Refresher extends Thread{
-        Label l;
-        public Refresher(Label l){
-            this.l = l;
-        }
-        @Override
-        public void run(){
-
-        }
     }
 }
