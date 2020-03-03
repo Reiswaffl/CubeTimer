@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GUI extends Application {
-    private Stage primaryStage;
+    private  Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage){
@@ -37,4 +37,5 @@ public class GUI extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }

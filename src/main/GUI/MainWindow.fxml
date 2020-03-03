@@ -19,11 +19,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="solvingTime" text="TIME" textAlignment="CENTER">
-                     <font>
-                        <Font name="Consolas" size="77.0" />
-                     </font>
-                  </Label>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextFlow prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </Pane>
                </children>
             </HBox>
          </children>
