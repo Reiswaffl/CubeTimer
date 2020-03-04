@@ -1,14 +1,21 @@
 package main.GUI;
 
-import javafx.application.Platform;
-import javafx.concurrent.Task;
+
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.text.Text;
+
+import javafx.scene.input.KeyEvent;
 
 public class MainWindowController  {
 
     public GUI gui;
-    @FXML   Label solvingTime;
+    private boolean running;
+    private boolean reset;
+    private boolean wait;
+    @FXML Text time;
+
     // Methods
     public void setGui(GUI gui) {
         this.gui = gui;
@@ -16,26 +23,50 @@ public class MainWindowController  {
 
     @FXML
     public void initialize(){
-        Task<Void> task = new Task<Void>() {
-            private long time = 0;
+        reset = true;
+        running = false;
+        wait = false;
+        AnimationTimer animation = new AnimationTimer() {
+            long startTime = System.currentTimeMillis();
             @Override
-            protected Void call() throws Exception {
-                while(true) {
-                    Platform.runLater(() -> {
-                        solvingTime.setText(String.valueOf(++time));
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    });
+            public void handle(long l) {
+                if(reset){
+                    time.setText("0.00");
+                    reset = false;
+                }
+                if(running){
+                    long cur = System.currentTimeMillis()- startTime;
+                    long sek = cur/1000;
+                    long mil = cur%1000 / 100;
+                    time.setText(sek + ":" + mil);
                 }
             }
         };
-        Thread thread = new Thread(task);
-        thread.setDaemon(true);
-        thread.start();
+        animation.start();
     }
+
+    public void start(){
+        gui.scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if(event.getCode().equals(KeyCode.SPACE)) {
+                if(running) {
+                    running = false;
+                    wait = true;
+                }
+                else
+                    reset = true;
+            }
+
+        });
+        gui.scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
+            if(event.getCode().equals(KeyCode.SPACE)) {
+                if(!wait)
+                    running = true;
+                wait = false;
+            }
+        });
+    }
+
+
 
 
 }

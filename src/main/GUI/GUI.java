@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class GUI extends Application {
     private  Stage primaryStage;
+    public Scene scene;
 
     @Override
     public void start(Stage primaryStage){
@@ -27,9 +28,10 @@ public class GUI extends Application {
 
             MainWindowController guiCon = loader.getController();
             guiCon.setGui(this);
-            Scene scene = new Scene(pane);
+            scene = new Scene(pane);
             primaryStage.setScene(scene);
             primaryStage.show();
+            guiCon.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
