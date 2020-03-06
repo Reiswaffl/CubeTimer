@@ -3,10 +3,13 @@ package main.GUI;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 
 import javafx.scene.input.KeyEvent;
+import main.Logic.Puzzles;
+import main.Logic.ScrambleGenerator;
 
 public class MainWindowController {
 
@@ -15,6 +18,8 @@ public class MainWindowController {
     private long startTime;
     @FXML
     Text time;
+    @FXML
+    Label scramble;
 
     // Methods
     public void setGui(GUI gui) {
@@ -44,6 +49,7 @@ public class MainWindowController {
             }
         };
         animation.start();
+        scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
     }
 
     public void start() {
@@ -51,8 +57,10 @@ public class MainWindowController {
             if (event.getCode().equals(KeyCode.SPACE)) {
                 if (state == 2)
                     state = 3;
-                else if (state == 3)
+                else if (state == 3) {
                     state = 1;
+                    scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
+                }
             }
 
         });
