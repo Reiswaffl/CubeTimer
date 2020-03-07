@@ -23,19 +23,14 @@
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="1200.0">
                            <children>
-                                <VBox alignment="CENTER" layoutX="-214.0" minWidth="-Infinity" prefHeight="208.0" prefWidth="1200.0" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-214.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <VBox alignment="CENTER" layoutX="-214.0" minWidth="-Infinity" prefHeight="208.0" prefWidth="1200.0" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                             <children>
-                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                    <children>
-                                                        <Label fx:id="scramble" alignment="CENTER" prefHeight="23.0" prefWidth="766.0" text="Scramble">
-                                                            <font>
-                                                                <Font name="Consolas" size="20.0" />
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </HBox>
+                                                <HBox alignment="CENTER" layoutY="-7.0" prefHeight="50.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"><children><Text text="Scramble">
+                                                   <font>
+                                                      <Font name="Consolas" size="25.0" />
+                                                   </font></Text></children></HBox>
                                             </children>
                                         </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
