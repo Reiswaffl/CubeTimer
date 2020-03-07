@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 public class ScrambleGenerator {
+    /**
+     *
+     * @param p puzzle, fuer das der Scramble generiert werden soll
+     * @return
+     */
     public static String generate(Puzzles p){
         switch (p){
             case THREE:

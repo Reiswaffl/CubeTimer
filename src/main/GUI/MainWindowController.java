@@ -19,13 +19,16 @@ public class MainWindowController {
     @FXML
     Text time;
     @FXML
-    Label scramble;
+    Text scramble;
 
     // Methods
     public void setGui(GUI gui) {
         this.gui = gui;
     }
 
+    /**
+     * GUI wird vorbereitet und Standartwerte werden gesetzt
+     */
     @FXML
     public void initialize() {
         state = 1;
@@ -52,14 +55,17 @@ public class MainWindowController {
         scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
     }
 
+    /**
+     * Listeners werden initialisiert
+     */
     public void start() {
         gui.scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode().equals(KeyCode.SPACE)) {
-                if (state == 2)
+                if (state == 2) {
                     state = 3;
-                else if (state == 3) {
-                    state = 1;
                     scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
+                } else if (state == 3) {
+                    state = 1;
                 }
             }
 
