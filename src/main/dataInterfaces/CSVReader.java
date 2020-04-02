@@ -18,7 +18,7 @@ public class CSVReader {
      * @param path  path where the file is found
      * @throws IOException
      */
-    public void write(String input, String path) throws IOException {
+    public static void write(String input, String path) throws IOException {
 
         FileWriter writer = new FileWriter(new File(path), true);
         writer.append(input).append("\n");
@@ -31,7 +31,7 @@ public class CSVReader {
      * @return List of all solve-data in the direction the path leads to
      * @throws IOException
      */
-    private List<String> read(String path) throws IOException {
+    private static List<String> read(String path) throws IOException {
         List<String> ret = new LinkedList<>();
         String line = "";
         BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -46,7 +46,7 @@ public class CSVReader {
      * @return list of solve-data converted to "Solve-Object"
      * @throws IOException
      */
-    public List<Solve> readSolveForm(String path) throws IOException {
+    public static List<Solve> readSolveForm(String path) throws IOException {
         List<Solve> ret = new LinkedList<>();
         String line = "";
         BufferedReader reader = new BufferedReader(new FileReader(path));
