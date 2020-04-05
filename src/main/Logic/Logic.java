@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.List;
 
 public class Logic {
 
@@ -19,12 +20,23 @@ public class Logic {
         String csvData = solve.getPuzzle() +","+ solve.getSpecializations() + ","+solve.getSolveTime()+","+solve.getDate() +",,n,n,,"+"\""+solve.getScramble()+"\",";
 
             CSVReader.write(csvData,path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             e.printStackTrace();
         }
+    }
+
+    public static double avg5(String puzzle, String spec){
+        try{
+            XMLReader reader = new XMLReader();
+            reader.update();
+            String path = reader.getPath(puzzle,spec);
+            List<Solve> list = CSVReader.readSolveForm(path);
+            list.subList(0,5);
+            return  list.stream().mapToDouble(num -> Double.parseDouble(num.getSolveTime())).average().orElse(0.00);
+
+        }catch (Exception e){
+            //TODO
+        }
+        return 0.00;
     }
 }

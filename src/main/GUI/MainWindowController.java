@@ -5,6 +5,8 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 
@@ -12,10 +14,12 @@ import javafx.scene.input.KeyEvent;
 import main.Logic.Logic;
 import main.Logic.Puzzles;
 import main.Logic.ScrambleGenerator;
+import main.dataInterfaces.Averages;
 import main.dataTransfer.Solve;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class MainWindowController {
     final String format = "MMM dd yyyy - HH:mm:ss";
@@ -30,7 +34,11 @@ public class MainWindowController {
     ChoiceBox puzzleSelect;
     @FXML
     ChoiceBox specSelect;
+    @FXML
+    TableView averages;
     // Methods
+    @FXML
+    Averages avg;
     public void setGui(GUI gui) {
         this.gui = gui;
     }
@@ -78,7 +86,10 @@ public class MainWindowController {
                      Solve solve = new Solve(puzzleSelect.getValue().toString(),
                              specSelect.getValue().toString(),time.getText(),formatter.format(date),scramble.getText());
                     Logic.save(solve);
+                    // neuen Scramble generien
                     scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
+                    // avg updaten
+
                 } else if (state == 3) {
                     state = 1;
                 }
@@ -101,5 +112,6 @@ public class MainWindowController {
      * state = 2: solving
      * state = 3: pause
      */
+
 
 }
