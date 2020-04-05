@@ -3,16 +3,22 @@ package main.GUI;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 
 import javafx.scene.input.KeyEvent;
+import main.Logic.Logic;
 import main.Logic.Puzzles;
 import main.Logic.ScrambleGenerator;
+import main.dataTransfer.Solve;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainWindowController {
-
+    final String format = "MMM dd yyyy - HH:mm:ss";
     public GUI gui;
     private int state;
     private long startTime;
@@ -20,7 +26,10 @@ public class MainWindowController {
     Text time;
     @FXML
     Text scramble;
-
+    @FXML
+    ChoiceBox puzzleSelect;
+    @FXML
+    ChoiceBox specSelect;
     // Methods
     public void setGui(GUI gui) {
         this.gui = gui;
@@ -63,6 +72,12 @@ public class MainWindowController {
             if (event.getCode().equals(KeyCode.SPACE)) {
                 if (state == 2) {
                     state = 3;
+                    // speichern
+                    SimpleDateFormat formatter = new SimpleDateFormat(format);
+                    Date date = new Date();
+                     Solve solve = new Solve(puzzleSelect.getValue().toString(),
+                             specSelect.getValue().toString(),time.getText(),formatter.format(date),scramble.getText());
+                    Logic.save(solve);
                     scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
                 } else if (state == 3) {
                     state = 1;
@@ -81,5 +96,10 @@ public class MainWindowController {
         });
     }
 
+    /**
+     * state = 1: waiting to start solve (inspection)
+     * state = 2: solving
+     * state = 3: pause
+     */
 
 }

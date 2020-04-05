@@ -18,7 +18,8 @@
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" AnchorPane.bottomAnchor="0.0"
                               AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                             <children>
-                                <ChoiceBox fx:id="puzzleSelect" prefWidth="150.0" value="3x3x3">
+                                <ChoiceBox fx:id="puzzleSelect" prefWidth="150.0" value="3x3x3"
+                                           focusTraversable="false">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="2x2x2"/>
@@ -35,7 +36,10 @@
                                         </FXCollections>
                                     </items>
                                 </ChoiceBox>
-                                <ChoiceBox fx:id="specSelect" prefWidth="150.0"/>
+                                <ChoiceBox fx:id="specSelect" prefWidth="150.0" value="Standard"
+                                           focusTraversable="false">
+                                    <String fx:value="Standard"/>
+                                </ChoiceBox>
                             </children>
                         </HBox>
                     </children>
@@ -76,7 +80,8 @@
                                                                    prefWidth="321.0" AnchorPane.bottomAnchor="-15.0"
                                                                    AnchorPane.leftAnchor="200.0"
                                                                    AnchorPane.rightAnchor="200.0"
-                                                                   AnchorPane.topAnchor="0.0">
+                                                                   AnchorPane.topAnchor="0.0"
+                                                                   focusTraversable="false">
                                                             <columns>
                                                                 <TableColumn fx:id="ao5" prefWidth="75.0" text="ao 5 "/>
                                                                 <TableColumn fx:id="ao12" prefWidth="75.0"

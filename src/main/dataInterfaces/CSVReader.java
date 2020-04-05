@@ -19,7 +19,6 @@ public class CSVReader {
      * @throws IOException
      */
     public static void write(String input, String path) throws IOException {
-
         FileWriter writer = new FileWriter(new File(path), true);
         writer.append(input).append("\n");
         writer.flush();

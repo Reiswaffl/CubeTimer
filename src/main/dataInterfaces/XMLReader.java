@@ -66,7 +66,7 @@ public class XMLReader {
             if(n.getNodeType() == Node.ELEMENT_NODE){
                 Element e = (Element) n;
                 // Check if its the searched Node
-                if(e.getAttribute(type).equals(type) && e.getAttribute(spec).equals(spec))
+                if(e.getAttribute("type").equals(type) && e.getAttribute("spec").equals(spec))
                     return e.getTextContent();
             }
         }
