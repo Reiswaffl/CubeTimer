@@ -52,7 +52,7 @@ public class MainWindowController {
     }
 
     /**
-     * GUI wird vorbereitet und Standartwerte werden gesetzt
+     * GUI gets prepared and the default-values are set
      */
     @FXML
     public void initialize() {
@@ -81,22 +81,22 @@ public class MainWindowController {
     }
 
     /**
-     * Listeners werden initialisiert
+     * listebers get initialized
      */
     public void start() {
         gui.scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode().equals(KeyCode.SPACE)) {
                 if (state == 2) {
                     state = 3;
-                    // speichern
+                    // save
                     SimpleDateFormat formatter = new SimpleDateFormat(format);
                     Date date = new Date();
                     Solve solve = new Solve(puzzleSelect.getValue().toString(),
                             specSelect.getValue().toString(), time.getText(), formatter.format(date), scramble.getText());
                     Logic.save(solve);
-                    // neuen Scramble generien
+                    // generate new Scramble
                     scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
-                    // avg updaten
+                    // update avg
                     updateAvg();
                 } else if (state == 3) {
                     state = 1;
@@ -116,6 +116,9 @@ public class MainWindowController {
         updateAvg();
     }
 
+    /**
+     * updates the averages on the GUI (resets the values)
+     */
     public void updateAvg() {
         ao5.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao5"));
         ao12.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao12"));
