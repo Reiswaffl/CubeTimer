@@ -1,14 +1,17 @@
 package tests;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import main.dataTransfer.Solve;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Tests {
     public static void main(String[] args) {
-        String format = "MMM dd,yyyy - HH:mm:ss";
-        SimpleDateFormat formatter = new SimpleDateFormat(format);
-        Date date = new Date();
-        System.out.println(formatter.format(date));
+        List<Solve> list = new LinkedList<>();
+        list.add(new Solve(" "," ","19.00","",""));
+        list.add(new Solve(" "," ","20.00","",""));
+        list.add(new Solve(" "," ","21.00","",""));
+        System.out.println(Double.toString(list.stream().mapToDouble(num -> Double.parseDouble(num.getSolveTime())).average().orElse(0.00)));
     }
 }

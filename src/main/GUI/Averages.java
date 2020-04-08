@@ -19,19 +19,19 @@ public class Averages {
     }
 
     public String getAo5() {
-        return ao5.get();
+        return ao5.get().toString();
     }
 
     public String getAo12() {
-        return ao12.get();
+        return ao12.get().toString();
     }
 
     public String getAo50() {
-        return ao50.get();
+        return ao50.get().toString();
     }
 
     public String getAo100() {
-        return ao100.get();
+        return ao100.get().toString();
     }
 
     public void setao12(String s ){

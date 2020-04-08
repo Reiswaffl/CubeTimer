@@ -20,6 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 
+//TODO
+// Tabelleninhalt centern (mit css)
 public class MainWindowController {
     final String format = "MMM dd yyyy - HH:mm:ss";
     public GUI gui;
@@ -95,7 +97,7 @@ public class MainWindowController {
                     // neuen Scramble generien
                     scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
                     // avg updaten
-
+                    updateAvg();
                 } else if (state == 3) {
                     state = 1;
                 }
@@ -114,13 +116,16 @@ public class MainWindowController {
         updateAvg();
     }
 
-    public void updateAvg(){
+    public void updateAvg() {
         ao5.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao5"));
         ao12.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao12"));
         ao50.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao50"));
         ao100.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao100"));
         LinkedList<Averages> list = new LinkedList<>();
-        Averages avg = new Averages("1.00", "0.00", "0.00", "0.00");
+        Averages avg = new Averages(Logic.avg(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 5),
+                Logic.avg(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 12),
+                Logic.avg(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 50),
+                Logic.avg(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 100));
         list.add(avg);
         averages.getItems().setAll(list);
     }

@@ -40,4 +40,8 @@ public class Solve {
     public String toString(){
         return solveTime +" : "+ date;
     }
+
+    public void setSolveTime(String solveTime) {
+        this.solveTime = solveTime;
+    }
 }
