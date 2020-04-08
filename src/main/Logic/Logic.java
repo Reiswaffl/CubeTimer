@@ -35,10 +35,8 @@ public class Logic {
             for(Solve s : list)
                                s.setSolveTime(s.getSolveTime().replace(":","."));
             if(list.size()>= of)
-               list =  list.subList(0, of);
-            System.out.println("HI");
+               list =  list.subList(list.size()-of, list.size());
             String s =Double.toString(Math.round(list.stream().mapToDouble(num -> Double.parseDouble(num.getSolveTime())).average().orElse(0.00)*100.0)/100.0);
-            System.out.println(s);
             return s;
 
         }catch (Exception e){
