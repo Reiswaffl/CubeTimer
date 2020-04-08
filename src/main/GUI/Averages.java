@@ -1,4 +1,4 @@
-package main.dataInterfaces;
+package main.GUI;
 
 import javafx.beans.property.SimpleStringProperty;
 public class Averages {
@@ -8,6 +8,10 @@ public class Averages {
     private SimpleStringProperty ao100;
 
     public Averages(String ao5, String ao12, String ao50, String ao100){
+        this.ao5 = new SimpleStringProperty();
+        this.ao12 = new SimpleStringProperty();
+        this.ao50 = new SimpleStringProperty();
+        this.ao100 = new SimpleStringProperty();
         setao5(ao5);
         setao12(ao12);
         setao50(ao50);

@@ -4,9 +4,9 @@ package main.GUI;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 
@@ -14,12 +14,11 @@ import javafx.scene.input.KeyEvent;
 import main.Logic.Logic;
 import main.Logic.Puzzles;
 import main.Logic.ScrambleGenerator;
-import main.dataInterfaces.Averages;
 import main.dataTransfer.Solve;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
+import java.util.LinkedList;
 
 public class MainWindowController {
     final String format = "MMM dd yyyy - HH:mm:ss";
@@ -35,10 +34,17 @@ public class MainWindowController {
     @FXML
     ChoiceBox specSelect;
     @FXML
-    TableView averages;
+    TableView<Averages> averages;
     // Methods
     @FXML
-    Averages avg;
+    private TableColumn<Averages, String> ao5;
+    @FXML
+    private TableColumn<Averages, String> ao12;
+    @FXML
+    private TableColumn<Averages, String> ao50;
+    @FXML
+    private TableColumn<Averages, String> ao100;
+
     public void setGui(GUI gui) {
         this.gui = gui;
     }
@@ -83,8 +89,8 @@ public class MainWindowController {
                     // speichern
                     SimpleDateFormat formatter = new SimpleDateFormat(format);
                     Date date = new Date();
-                     Solve solve = new Solve(puzzleSelect.getValue().toString(),
-                             specSelect.getValue().toString(),time.getText(),formatter.format(date),scramble.getText());
+                    Solve solve = new Solve(puzzleSelect.getValue().toString(),
+                            specSelect.getValue().toString(), time.getText(), formatter.format(date), scramble.getText());
                     Logic.save(solve);
                     // neuen Scramble generien
                     scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
@@ -105,8 +111,19 @@ public class MainWindowController {
 
             }
         });
+        updateAvg();
     }
 
+    public void updateAvg(){
+        ao5.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao5"));
+        ao12.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao12"));
+        ao50.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao50"));
+        ao100.setCellValueFactory(new PropertyValueFactory<Averages, String>("ao100"));
+        LinkedList<Averages> list = new LinkedList<>();
+        Averages avg = new Averages("1.00", "0.00", "0.00", "0.00");
+        list.add(avg);
+        averages.getItems().setAll(list);
+    }
     /**
      * state = 1: waiting to start solve (inspection)
      * state = 2: solving
