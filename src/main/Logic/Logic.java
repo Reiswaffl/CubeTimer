@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 import javax.sound.midi.Soundbank;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Logic {
@@ -50,8 +51,8 @@ public class Logic {
             List<Solve> list = CSVReader.readSolveForm(path);
             for (Solve s : list) {
                 // get the Times into the right format and make them able to be seen as double
-                String cur = s.getSolveTime().replace(":", ".");
-                String[] curArr = cur.split(".");
+                String cur = s.getSolveTime().replace(":",".");
+                String[] curArr = cur.split("\\.");
                 if (curArr.length > 2)
                     cur = (Integer.toString((Integer.parseInt(curArr[0]) * 60 + Integer.parseInt(curArr[1]))) + "." + curArr[2]);
                 s.setSolveTime(cur);
@@ -65,13 +66,39 @@ public class Logic {
             double result = list.stream().mapToDouble(num -> Double.parseDouble(num.getSolveTime())).average().orElse(0.00);
             // get it into a nice String-form with (for the GUI)
             if (result >= 60.0)
-                return ((int) result / 60) + ":" + ((int) result % 60) + ":" + (Math.round((int) (result * 100.0) % 100.0));
+                return ((int) result / 60) + ":" + ((int) result % 60) + "." + (Math.round((int) (result * 100.0) % 100.0));
             else
-                return ((int) result % 60) + ":" + (Math.round((int) (result * 100.0) % 100.0));
+                return ((int) result % 60) + "." + (Math.round((int) (result * 100.0) % 100.0));
         } catch (Exception e) {
             //TODO
         }
         // when the program fucked up
-        return "0.00";
+        return "-";
+    }
+
+    /**
+     *
+     * @param puzzle puzzle the list is supposed to be about
+     * @param spec spec of the puzzle the list is supposed to be about
+     * @param size size of the list, that will be returned
+     * @return list with String-values of the solving-times
+     */
+    public static List<String> listTimes(String puzzle, String spec, int size){
+        // load the right path to csv-file with the solves
+        try {
+            List<String> ret = new LinkedList<>();
+            XMLReader reader = new XMLReader();
+            reader.update();
+            String path = reader.getPath(puzzle, spec);
+            // get a list of solves
+            List<Solve> list = CSVReader.readSolveForm(path);
+            list = list.subList(list.size()-size,list.size());
+            for(Solve s : list)
+                ret.add(s.getSolveTime());
+            return ret;
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

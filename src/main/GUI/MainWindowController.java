@@ -4,6 +4,7 @@ package main.GUI;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,8 +18,10 @@ import main.Logic.ScrambleGenerator;
 import main.dataTransfer.Solve;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 //TODO
 // Tabelleninhalt centern (mit css)
@@ -46,6 +49,12 @@ public class MainWindowController {
     private TableColumn<Averages, String> ao50;
     @FXML
     private TableColumn<Averages, String> ao100;
+    @FXML
+    private ListView<String> timeList0;
+    @FXML
+    private ListView<String> timeList1;
+    @FXML
+    private ListView<String> timeList2;
 
     public void setGui(GUI gui) {
         this.gui = gui;
@@ -91,13 +100,22 @@ public class MainWindowController {
                     // save
                     SimpleDateFormat formatter = new SimpleDateFormat(format);
                     Date date = new Date();
+                    System.out.println(time.getText());
+                    String[] arr = time.getText().replace(":", ".").split("\\.");
+                    String s = "";
+                    if (arr.length == 3)
+                        s = arr[0] + ":" + arr[1] + "." + arr[2];
+                    else
+                        s = arr[0] + "." + arr[1];
                     Solve solve = new Solve(puzzleSelect.getValue().toString(),
-                            specSelect.getValue().toString(), time.getText(), formatter.format(date), scramble.getText());
+                            specSelect.getValue().toString(), s, formatter.format(date), scramble.getText());
                     Logic.save(solve);
                     // generate new Scramble
                     scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
                     // update avg
                     updateAvg();
+                    // update times
+                    updateTimes();
                 } else if (state == 3) {
                     state = 1;
                 }
@@ -114,6 +132,7 @@ public class MainWindowController {
             }
         });
         updateAvg();
+        updateTimes();
     }
 
     /**
@@ -131,6 +150,32 @@ public class MainWindowController {
                 Logic.avg(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 100));
         list.add(avg);
         averages.getItems().setAll(list);
+    }
+
+    /**
+     * updates the values of the latest solves (in table/list)
+     */
+    public void updateTimes() {
+        List<String> times = Logic.listTimes(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 12);
+        if(times != null) {
+            Collections.reverse(times);
+            List<String> left = new LinkedList<>();
+            List<String> mid = new LinkedList<>();
+            List<String> right = new LinkedList<>();
+            for (int i = 0; i <= 12; i += 3) {
+                try {
+                    left.add(times.get(i));
+                    mid.add(times.get(1 + i));
+                    right.add(times.get(2 + i));
+                } catch (Exception e) {
+                }
+
+            }
+            timeList0.getItems().setAll(left);
+            timeList1.getItems().setAll(mid);
+            timeList2.getItems().setAll(right);
+        }
+
     }
     /**
      * state = 1: waiting to start solve (inspection)

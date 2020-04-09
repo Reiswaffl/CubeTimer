@@ -8,9 +8,10 @@ import java.util.List;
 
 public class Tests {
     public static void main(String[] args) {
-        String s = "1:20:34";
-        String[] arr = s.split(":");
-        for(int i = 0; i < arr.length; i++)
-            System.out.println(arr[i]);
+        Solve s = new Solve(",","","1.12.31","","");
+       String cur = s.getSolveTime();
+        cur = "a.b.c";
+       String[] curArr = cur.split("\\.");
+        System.out.println(curArr.length);
     }
 }
