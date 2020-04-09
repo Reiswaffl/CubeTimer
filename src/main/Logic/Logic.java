@@ -83,19 +83,16 @@ public class Logic {
      * @param size size of the list, that will be returned
      * @return list with String-values of the solving-times
      */
-    public static List<String> listTimes(String puzzle, String spec, int size){
+    public static List<Solve> listTimes(String puzzle, String spec, int size){
         // load the right path to csv-file with the solves
         try {
-            List<String> ret = new LinkedList<>();
             XMLReader reader = new XMLReader();
             reader.update();
             String path = reader.getPath(puzzle, spec);
             // get a list of solves
             List<Solve> list = CSVReader.readSolveForm(path);
             list = list.subList(list.size()-size,list.size());
-            for(Solve s : list)
-                ret.add(s.getSolveTime());
-            return ret;
+            return list;
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
         }

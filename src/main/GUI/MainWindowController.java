@@ -30,6 +30,7 @@ public class MainWindowController {
     public GUI gui;
     private int state;
     private long startTime;
+    private List<Solve> times;
     @FXML
     Text time;
     @FXML
@@ -156,7 +157,7 @@ public class MainWindowController {
      * updates the values of the latest solves (in table/list)
      */
     public void updateTimes() {
-        List<String> times = Logic.listTimes(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 12);
+        times = Logic.listTimes(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 12);
         if(times != null) {
             Collections.reverse(times);
             List<String> left = new LinkedList<>();
@@ -164,9 +165,9 @@ public class MainWindowController {
             List<String> right = new LinkedList<>();
             for (int i = 0; i <= 12; i += 3) {
                 try {
-                    left.add(times.get(i));
-                    mid.add(times.get(1 + i));
-                    right.add(times.get(2 + i));
+                    left.add(times.get(i).getSolveTime());
+                    mid.add(times.get(1 + i).getSolveTime());
+                    right.add(times.get(2 + i).getSolveTime());
                 } catch (Exception e) {
                 }
 

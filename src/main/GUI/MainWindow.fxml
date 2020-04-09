@@ -7,33 +7,39 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.GUI.MainWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.GUI.MainWindowController">
     <children>
-        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                             <children>
-                                <ChoiceBox fx:id="puzzleSelect" focusTraversable="false" prefWidth="150.0" value="3x3x3">
+                                <ChoiceBox fx:id="puzzleSelect" focusTraversable="false" prefWidth="150.0"
+                                           value="3x3x3">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="2x2x2" />
-                                            <String fx:value="3x3x3" />
-                                            <String fx:value="4x4x4" />
-                                            <String fx:value="5x5x5" />
-                                            <String fx:value="6x6x6" />
-                                            <String fx:value="7x7x7" />
-                                            <String fx:value="SqaureOne" />
-                                            <String fx:value="Skewb" />
-                                            <String fx:value="Pyraminx" />
-                                            <String fx:value="Megaminx" />
-                                            <String fx:value="Clock" />
+                                            <String fx:value="2x2x2"/>
+                                            <String fx:value="3x3x3"/>
+                                            <String fx:value="4x4x4"/>
+                                            <String fx:value="5x5x5"/>
+                                            <String fx:value="6x6x6"/>
+                                            <String fx:value="7x7x7"/>
+                                            <String fx:value="SqaureOne"/>
+                                            <String fx:value="Skewb"/>
+                                            <String fx:value="Pyraminx"/>
+                                            <String fx:value="Megaminx"/>
+                                            <String fx:value="Clock"/>
                                         </FXCollections>
                                     </items>
                                 </ChoiceBox>
-                                <ChoiceBox fx:id="specSelect" focusTraversable="false" prefWidth="150.0" value="Standard">
-                                    <String fx:value="Standard" />
+                                <ChoiceBox fx:id="specSelect" focusTraversable="false" prefWidth="150.0"
+                                           value="Standard">
+                                    <String fx:value="Standard"/>
                                 </ChoiceBox>
                             </children>
                         </HBox>
@@ -41,19 +47,27 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="100.0">
                             <children>
                                 <AnchorPane prefHeight="200.0" prefWidth="1200.0">
                                     <children>
-                                        <VBox alignment="CENTER" layoutX="-214.0" minWidth="-Infinity" prefHeight="208.0" prefWidth="1200.0" spacing="70.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <VBox alignment="CENTER" layoutX="-214.0" minWidth="-Infinity"
+                                              prefHeight="208.0" prefWidth="1200.0" spacing="70.0"
+                                              AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0"
+                                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                     <children>
-                                                        <HBox alignment="CENTER" layoutY="-7.0" prefHeight="50.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <HBox alignment="CENTER" layoutY="-7.0" prefHeight="50.0"
+                                                              prefWidth="1200.0" AnchorPane.bottomAnchor="0.0"
+                                                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                                              AnchorPane.topAnchor="0.0">
                                                             <children>
                                                                 <Text fx:id="scramble" text="Scramble">
                                                                     <font>
-                                                                        <Font name="Consolas" size="25.0" />
+                                                                        <Font name="Consolas" size="25.0"/>
                                                                     </font>
                                                                 </Text>
                                                             </children>
@@ -62,11 +76,14 @@
                                                 </AnchorPane>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                     <children>
-                                                        <HBox alignment="CENTER" layoutX="-31.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <HBox alignment="CENTER" layoutX="-31.0" prefHeight="100.0"
+                                                              prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
+                                                              AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0"
+                                                              AnchorPane.topAnchor="0.0">
                                                             <children>
                                                                 <Text fx:id="time" text="TIME " textAlignment="CENTER">
                                                                     <font>
-                                                                        <Font name="Consolas" size="39.0" />
+                                                                        <Font name="Consolas" size="39.0"/>
                                                                     </font>
                                                                 </Text>
                                                             </children>
@@ -75,33 +92,44 @@
                                                 </AnchorPane>
                                                 <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
                                                     <children>
-                                                        <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0"
+                                                                  AnchorPane.leftAnchor="0.0"
+                                                                  AnchorPane.rightAnchor="0.0"
+                                                                  AnchorPane.topAnchor="0.0">
                                                             <children>
-                                                                <TableView fx:id="averages" focusTraversable="false" maxWidth="-Infinity" prefHeight="60.0" prefWidth="321.0" GridPane.halignment="CENTER">
+                                                                <TableView fx:id="averages" focusTraversable="false"
+                                                                           maxWidth="-Infinity" prefHeight="60.0"
+                                                                           prefWidth="321.0"
+                                                                           GridPane.halignment="CENTER">
                                                                     <columns>
-                                                                        <TableColumn fx:id="ao5" prefWidth="100.0" text="ao 5 ">
+                                                                        <TableColumn fx:id="ao5" prefWidth="100.0"
+                                                                                     text="ao 5 ">
 
                                                                         </TableColumn>
-                                                                        <TableColumn fx:id="ao12" prefWidth="75.0" text="ao 12">
+                                                                        <TableColumn fx:id="ao12" prefWidth="75.0"
+                                                                                     text="ao 12">
 
                                                                         </TableColumn>
-                                                                        <TableColumn fx:id="ao50" prefWidth="75.0" text="ao 50">
+                                                                        <TableColumn fx:id="ao50" prefWidth="75.0"
+                                                                                     text="ao 50">
 
                                                                         </TableColumn>
-                                                                        <TableColumn fx:id="ao100" prefWidth="75.0" text="ao 100">
+                                                                        <TableColumn fx:id="ao100" prefWidth="75.0"
+                                                                                     text="ao 100">
 
                                                                         </TableColumn>
                                                                     </columns>
                                                                     <columnResizePolicy>
-                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                        <TableView
+                                                                                fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                                                                     </columnResizePolicy>
                                                                 </TableView>
                                                             </children>
                                                             <columnConstraints>
-                                                                <ColumnConstraints />
+                                                                <ColumnConstraints/>
                                                             </columnConstraints>
                                                             <rowConstraints>
-                                                                <RowConstraints />
+                                                                <RowConstraints/>
                                                             </rowConstraints>
                                                         </GridPane>
                                                     </children>
@@ -116,16 +144,41 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="800.0">
                     <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <ListView fx:id="timeList0" focusTraversable="false" maxHeight="-Infinity" prefHeight="100.0" prefWidth="300.0">
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor></ListView>
-                        <ListView fx:id="timeList1" focusTraversable="false" maxHeight="-Infinity" prefHeight="100.0" prefWidth="300.0" />
-                              <ListView fx:id="timeList2" focusTraversable="false" maxHeight="-Infinity" prefHeight="100.0" prefWidth="300.0" />
-                     </children>
-                  </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <ListView fx:id="timeList0" focusTraversable="false" maxHeight="-Infinity"
+                                          prefHeight="100.0" prefWidth="300.0">
+                                    <contextMenu>
+                                        <ContextMenu>
+                                            <items>
+                                                <MenuItem text="delete"/>
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
+                                </ListView>
+                                <ListView fx:id="timeList1" focusTraversable="false" maxHeight="-Infinity"
+                                          prefHeight="100.0" prefWidth="300.0">
+                                    <contextMenu>
+                                        <ContextMenu>
+                                            <items>
+                                                <MenuItem text="delete"/>
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
+                                </ListView>
+                                <ListView fx:id="timeList2" focusTraversable="false" maxHeight="-Infinity"
+                                          prefHeight="100.0" prefWidth="300.0">
+                                    <contextMenu>
+                                        <ContextMenu>
+                                            <items>
+                                                <MenuItem text="delete"/>
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
+                                </ListView>
+                            </children>
+                        </HBox>
                     </children>
                 </AnchorPane>
             </children>
