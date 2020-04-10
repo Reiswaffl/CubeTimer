@@ -51,7 +51,7 @@ public class Logic {
             List<Solve> list = CSVReader.readSolveForm(path);
             for (Solve s : list) {
                 // get the Times into the right format and make them able to be seen as double
-                String cur = s.getSolveTime().replace(":",".");
+                String cur = s.getSolveTime().replace(":", ".");
                 String[] curArr = cur.split("\\.");
                 if (curArr.length > 2)
                     cur = (Integer.toString((Integer.parseInt(curArr[0]) * 60 + Integer.parseInt(curArr[1]))) + "." + curArr[2]);
@@ -77,13 +77,12 @@ public class Logic {
     }
 
     /**
-     *
      * @param puzzle puzzle the list is supposed to be about
-     * @param spec spec of the puzzle the list is supposed to be about
-     * @param size size of the list, that will be returned
+     * @param spec   spec of the puzzle the list is supposed to be about
+     * @param size   size of the list, that will be returned
      * @return list with String-values of the solving-times
      */
-    public static List<Solve> listTimes(String puzzle, String spec, int size){
+    public static List<Solve> listTimes(String puzzle, String spec, int size) {
         // load the right path to csv-file with the solves
         try {
             XMLReader reader = new XMLReader();
@@ -91,11 +90,23 @@ public class Logic {
             String path = reader.getPath(puzzle, spec);
             // get a list of solves
             List<Solve> list = CSVReader.readSolveForm(path);
-            list = list.subList(list.size()-size,list.size());
+            if(list.size() > size) {
+                list = list.subList(list.size() - size, list.size());
+            }
             return list;
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void delete(String puzzle, String spec, Solve solve) {
+        try {
+            XMLReader reader = new XMLReader();
+            reader.update();
+            String path = reader.getPath(puzzle, spec);
+            CSVReader.delete(solve,path);
+        } catch (Exception e) {
+        }
     }
 }

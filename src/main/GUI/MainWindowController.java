@@ -2,11 +2,10 @@ package main.GUI;
 
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
@@ -32,9 +31,9 @@ public class MainWindowController {
     private long startTime;
     private List<Solve> times;
     @FXML
-    Text time;
+    Label time;
     @FXML
-    Text scramble;
+    Label scramble;
     @FXML
     ChoiceBox puzzleSelect;
     @FXML
@@ -56,6 +55,12 @@ public class MainWindowController {
     private ListView<String> timeList1;
     @FXML
     private ListView<String> timeList2;
+    @FXML
+    private MenuItem m1;
+    @FXML
+    private MenuItem m2;
+    @FXML
+    private MenuItem m3;
 
     public void setGui(GUI gui) {
         this.gui = gui;
@@ -88,6 +93,7 @@ public class MainWindowController {
         };
         animation.start();
         scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
+
     }
 
     /**
@@ -112,16 +118,13 @@ public class MainWindowController {
                             specSelect.getValue().toString(), s, formatter.format(date), scramble.getText());
                     Logic.save(solve);
                     // generate new Scramble
-                    scramble.setText(ScrambleGenerator.generate(Puzzles.THREE));
-                    // update avg
-                    updateAvg();
-                    // update times
-                    updateTimes();
+                    scramble.setText(ScrambleGenerator.generate(convertPuzzle()));
+                    // update avg and times
+                    update();
                 } else if (state == 3) {
                     state = 1;
                 }
             }
-
         });
         gui.scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
             if (event.getCode().equals(KeyCode.SPACE)) {
@@ -132,8 +135,26 @@ public class MainWindowController {
 
             }
         });
-        updateAvg();
-        updateTimes();
+        m1.setOnAction((e) -> {
+            int index  = timeList0.getSelectionModel().getSelectedIndex();
+            Logic.delete(puzzleSelect.getValue().toString(), specSelect.getValue().toString(),times.get(index * 3));
+            update();
+        });
+        m2.setOnAction((e) -> {
+            int index  = timeList1.getSelectionModel().getSelectedIndex();
+            Logic.delete(puzzleSelect.getValue().toString(), specSelect.getValue().toString(),times.get(index * 3 + 1));
+           update();
+        });
+        m3.setOnAction((e) -> {
+            int index  = timeList2.getSelectionModel().getSelectedIndex();
+            Logic.delete(puzzleSelect.getValue().toString(), specSelect.getValue().toString(),times.get(index * 3 + 2));
+            update();
+        });
+
+        puzzleSelect.valueProperty().addListener((observableValue, o, t1) -> update());
+        specSelect.valueProperty().addListener((observableValue, o, t1) -> update());
+
+       update();
     }
 
     /**
@@ -158,7 +179,7 @@ public class MainWindowController {
      */
     public void updateTimes() {
         times = Logic.listTimes(puzzleSelect.getValue().toString(), specSelect.getValue().toString(), 12);
-        if(times != null) {
+        if (times != null) {
             Collections.reverse(times);
             List<String> left = new LinkedList<>();
             List<String> mid = new LinkedList<>();
@@ -178,11 +199,52 @@ public class MainWindowController {
         }
 
     }
+
+    /**
+     * combines both update-functions
+     */
+    public void update(){
+        updateTimes();
+        updateAvg();
+        scramble.setText(ScrambleGenerator.generate(convertPuzzle()));
+    }
+
+    /**
+     * Converts puzzleSelect (user interface) to puzzleSelect (backend)
+     * @return convertet value of Puzzles-enum
+     */
+    private Puzzles convertPuzzle(){
+        switch (puzzleSelect.getValue().toString()){
+            case "2x2x2":
+                return Puzzles.TWO;
+            case "3x3x3":
+                return Puzzles.THREE;
+            case "4x4x4":
+                return Puzzles.FOUR;
+            case "5x5x5":
+                return Puzzles.FIVE;
+            case "6x6x6":
+                return Puzzles.SIX;
+            case "7x7x7":
+                return Puzzles.SEVEN;
+            case "Pyraminx":
+                return Puzzles.PYRAMINX;
+            case "Skewb":
+                return Puzzles.SKEWB;
+            case "Megaminx":
+                return Puzzles.MEGAMINX;
+            case "SquareOne":
+                return Puzzles.SQAUREONE;
+            case "Clock":
+                return Puzzles.CLOCK;
+            default:
+                return null;
+        }
+    }
     /**
      * state = 1: waiting to start solve (inspection)
      * state = 2: solving
      * state = 3: pause
      */
-
 
 }

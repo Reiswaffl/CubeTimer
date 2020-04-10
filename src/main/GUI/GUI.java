@@ -29,6 +29,7 @@ public class GUI extends Application {
             MainWindowController guiCon = loader.getController();
             guiCon.setGui(this);
             scene = new Scene(pane);
+            scene.getStylesheets().add(getClass().getResource("MainWindow.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.show();
             guiCon.start();

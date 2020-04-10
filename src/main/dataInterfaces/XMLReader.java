@@ -15,8 +15,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class XMLReader {
     private Document doc;
@@ -60,17 +59,29 @@ public class XMLReader {
     public String getPath(String type, String spec){
         // Get Puzzle-Nodes
         NodeList nList = doc.getElementsByTagName("puzzle");
-        for(int i = 0; i < nList.getLength(); i++){
-            Node n = nList.item(i);
-            // Check if ELEMENT_NDOE
-            if(n.getNodeType() == Node.ELEMENT_NODE){
-                Element e = (Element) n;
-                // Check if its the searched Node
-                if(e.getAttribute("type").equals(type) && e.getAttribute("spec").equals(spec))
-                    return e.getTextContent();
+        if(nList != null) {
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node n = nList.item(i);
+                // Check if ELEMENT_NDOE
+                if (n.getNodeType() == Node.ELEMENT_NODE) {
+                    Element e = (Element) n;
+                    // Check if its the searched Node
+                    if (e.getAttribute("type").equals(type) && e.getAttribute("spec").equals(spec))
+                        return e.getTextContent();
+                }
             }
         }
         // when Node is not there return null
+        // neues File erstellen
+        String fileName = "data/" + type + spec + ".csv";
+        File newFile = new File(fileName);
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(newFile));
+            write(type,spec,fileName);
+            return fileName;
+        } catch (IOException | TransformerException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

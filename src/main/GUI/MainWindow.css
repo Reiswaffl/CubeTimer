@@ -1,0 +1,22 @@
+.root {
+    -fx-font-family: Consolas;
+
+}
+
+#anchor {
+    -fx-background-color: #2f3542;
+}
+
+.label {
+    -fx-text-fill: #1e90ff;
+}
+#time{
+    -fx-text-fill: #dfe4ea;
+}
+.choice-box {
+    -fx-font-size: 16pt;
+    -fx-pref-width: 160;
+    -fx-background-color: #2f3542;
+    -fx-border-color: #57606f;
+    -fx-border-width: 0 3 3 0;
+}

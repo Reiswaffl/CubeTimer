@@ -57,11 +57,9 @@ public class CSVReader {
     public static void delete(Solve solve , String path) throws IOException {
         List<String> list = read(path);
         for(String s : list){
-            System.out.println(s);
             String[] cur = s.replace("\"","").split(",");
             if(cur[3].equals(solve.getDate())){
                 list.remove(s);
-                System.out.println("Hello");
                 break;
             }
         }

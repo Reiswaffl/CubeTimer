@@ -1,1 +1,0 @@
-cubetype,solvetype,time,date,steps,plustwo,blind,scrambleType,scramble,comment
