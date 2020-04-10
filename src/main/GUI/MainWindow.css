@@ -10,13 +10,57 @@
 .label {
     -fx-text-fill: #1e90ff;
 }
-#time{
+
+#time {
     -fx-text-fill: #dfe4ea;
 }
+
 .choice-box {
     -fx-font-size: 16pt;
     -fx-pref-width: 160;
     -fx-background-color: #2f3542;
     -fx-border-color: #57606f;
     -fx-border-width: 0 3 3 0;
+}
+
+#timeList0 .list-cell:odd {
+    -fx-background-color: #747d8c;
+
+}
+#timeList0 .list-cell:even {
+    -fx-background-color: #57606f;
+
+}
+#timeList1 .list-cell:even {
+    -fx-background-color: #747d8c;
+
+}
+#timeList1 .list-cell:odd {
+    -fx-background-color: #57606f;
+
+}
+#timeList2 .list-cell:odd {
+    -fx-background-color: #747d8c;
+
+}
+#timeList2 .list-cell:even {
+    -fx-background-color: #57606f;
+}
+
+.list-view{
+    -fx-cell-size: 4;
+    -fx-border-style: none;
+    -fx-font-size: 12pt;
+    -fx-pref-height: 115;
+    -fx-background-color:#70a1ff;
+}
+.list-cell {
+    -fx-alignment: center;
+    -fx-text-fill: #2f3542;
+    -fx-border-color: #70a1ff;
+    -fx-border-radius: 1pt;
+}
+.cell{
+    -fx-alignment: center;
+    -fx-text-fill: #dfe4ea;
 }
