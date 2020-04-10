@@ -109,4 +109,45 @@ public class Logic {
         } catch (Exception e) {
         }
     }
+    public static String lifeTimeBest(String puzzle, String spec){
+        try {
+            XMLReader reader = new XMLReader();
+            reader.update();
+            String path = reader.getPath(puzzle, spec);
+            // get a list of solves
+            List<Solve> list = CSVReader.readSolveForm(path);
+            for (Solve s : list) {
+                    // get the Times into the right format and make them able to be seen as double
+                    String cur = s.getSolveTime().replace(":", ".");
+                    String[] curArr = cur.split("\\.");
+                    if (curArr.length > 2)
+                        cur = (Integer.toString((Integer.parseInt(curArr[0]) * 60 + Integer.parseInt(curArr[1]))) + "." + curArr[2]);
+                    s.setSolveTime(cur);
+            }
+
+            double result = list.stream().mapToDouble(num -> Double.parseDouble(num.getSolveTime())).min().orElse(0.00);
+            // get it into a nice String-form with (for the GUI)
+            if (result >= 60.0)
+                return ((int) result / 60) + ":" + ((int) result % 60) + "." + (Math.round((int) (result * 100.0) % 100.0));
+            else
+                return ((int) result % 60) + "." + (Math.round((int) (result * 100.0) % 100.0));
+
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
+        return "0.00";
+    }
+    public static String solvesCount(String puzzle, String spec){
+        try {
+            XMLReader reader = new XMLReader();
+            reader.update();
+            String path = reader.getPath(puzzle, spec);
+            // get a list of solves
+            List<Solve> list = CSVReader.readSolveForm(path);
+            return Integer.toString(list.size());
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            e.printStackTrace();
+        }
+        return "0";
+    }
 }

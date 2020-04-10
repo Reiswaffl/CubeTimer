@@ -16,6 +16,7 @@ import main.Logic.Puzzles;
 import main.Logic.ScrambleGenerator;
 import main.dataTransfer.Solve;
 
+import javax.security.auth.login.LoginException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
@@ -61,7 +62,10 @@ public class MainWindowController {
     private MenuItem m2;
     @FXML
     private MenuItem m3;
-
+    @FXML
+    private Label lifeBest;
+    @FXML
+    private Label solves;
     public void setGui(GUI gui) {
         this.gui = gui;
     }
@@ -206,6 +210,8 @@ public class MainWindowController {
     public void update(){
         updateTimes();
         updateAvg();
+        updateltBest();
+        updateSolves();
         scramble.setText(ScrambleGenerator.generate(convertPuzzle()));
     }
 
@@ -240,6 +246,14 @@ public class MainWindowController {
             default:
                 return null;
         }
+    }
+
+    private void updateltBest(){
+        lifeBest.setText("Lifetime Best: "+ Logic.lifeTimeBest(puzzleSelect.getValue().toString(),specSelect.getValue().toString()));
+    }
+
+    private void updateSolves(){
+        solves.setText("Solves: " + Logic.solvesCount(puzzleSelect.getValue().toString(),specSelect.getValue().toString()));
     }
     /**
      * state = 1: waiting to start solve (inspection)

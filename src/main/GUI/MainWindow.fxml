@@ -10,9 +10,9 @@
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <AnchorPane fx:id="top" prefHeight="70.0" prefWidth="200.0">
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                             <children>
                                 <ChoiceBox fx:id="puzzleSelect" focusTraversable="false" prefWidth="150.0" value="3x3x3">
                                     <items>
@@ -76,18 +76,18 @@
                                                     <children>
                                                         <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <children>
-                                                                <TableView fx:id="averages" focusTraversable="false" maxWidth="-Infinity" prefHeight="60.0" prefWidth="321.0" GridPane.halignment="CENTER">
+                                                                <TableView fx:id="averages" focusTraversable="false" prefHeight="60.0" prefWidth="330.0" GridPane.halignment="CENTER">
                                                                     <columns>
                                                                         <TableColumn fx:id="ao5" prefWidth="100.0" text="ao 5 ">
 
                                                                         </TableColumn>
-                                                                        <TableColumn fx:id="ao12" prefWidth="75.0" text="ao 12">
+                                                                        <TableColumn fx:id="ao12" prefWidth="100.0" text="ao 12">
 
                                                                         </TableColumn>
-                                                                        <TableColumn fx:id="ao50" prefWidth="75.0" text="ao 50">
+                                                                        <TableColumn fx:id="ao50" prefWidth="100.0" text="ao 50">
 
                                                                         </TableColumn>
-                                                                        <TableColumn fx:id="ao100" prefWidth="75.0" text="ao 100">
+                                                                        <TableColumn fx:id="ao100" prefWidth="100.0" text="ao 100">
 
                                                                         </TableColumn>
                                                                     </columns>
@@ -105,6 +105,20 @@
                                                         </GridPane>
                                                     </children>
                                                 </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label fx:id="lifeBest" contentDisplay="CENTER" text="Lifetime Best ">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="solves" text="Solves" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </AnchorPane>
                                             </children>
                                         </VBox>
                                     </children>
