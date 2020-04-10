@@ -2,6 +2,7 @@ package main.GUI;
 
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -254,6 +255,11 @@ public class MainWindowController {
 
     private void updateSolves(){
         solves.setText("Solves: " + Logic.solvesCount(puzzleSelect.getValue().toString(),specSelect.getValue().toString()));
+    }
+
+    @FXML
+    public void close(){
+        Platform.exit();
     }
     /**
      * state = 1: waiting to start solve (inspection)

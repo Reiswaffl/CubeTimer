@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.GUI.MainWindowController">
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.GUI.MainWindowController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <AnchorPane fx:id="top" prefHeight="70.0" prefWidth="200.0">
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                        <HBox prefHeight="100.0" prefWidth="150.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                             <children>
                                 <ChoiceBox fx:id="puzzleSelect" focusTraversable="false" prefWidth="150.0" value="3x3x3">
                                     <items>
@@ -36,6 +36,10 @@
                                 </ChoiceBox>
                             </children>
                         </HBox>
+                  <Button layoutX="1134.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" text="X" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" focusTraversable="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
