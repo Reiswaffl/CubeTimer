@@ -5,10 +5,13 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import javafx.scene.input.KeyEvent;
@@ -32,6 +35,8 @@ public class MainWindowController {
     private int state;
     private long startTime;
     private List<Solve> times;
+    private double xOffset = 0;
+    private double yOffset = 0;
     @FXML
     Label time;
     @FXML
@@ -156,8 +161,24 @@ public class MainWindowController {
             update();
         });
 
-        puzzleSelect.valueProperty().addListener((observableValue, o, t1) -> update());
-        specSelect.valueProperty().addListener((observableValue, o, t1) -> update());
+        gui.pane.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+
+        //move around here
+        gui.pane.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                gui.primaryStage.setX(event.getScreenX() - xOffset);
+                gui.primaryStage.setY(event.getScreenY() - yOffset);
+            }
+        });
+        puzzleSelect.valueProperty().addListener((observableValue, o, t1) -> {update();time.setText("0.00");});
+        specSelect.valueProperty().addListener((observableValue, o, t1) -> {update();time.setText("0.00");});
 
        update();
     }
@@ -202,7 +223,6 @@ public class MainWindowController {
             timeList1.getItems().setAll(mid);
             timeList2.getItems().setAll(right);
         }
-
     }
 
     /**

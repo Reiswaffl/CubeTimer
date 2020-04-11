@@ -12,7 +12,7 @@
             <children>
                 <AnchorPane fx:id="top" prefHeight="70.0" prefWidth="200.0">
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="150.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                        <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="150.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                             <children>
                                 <ChoiceBox fx:id="puzzleSelect" focusTraversable="false" prefWidth="150.0" value="3x3x3">
                                     <items>
@@ -36,7 +36,7 @@
                                 </ChoiceBox>
                             </children>
                         </HBox>
-                  <Button layoutX="1134.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" text="X" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" focusTraversable="false">
+                  <Button focusTraversable="false" layoutX="1134.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" text="X" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <font>
                         <Font size="14.0" />
                      </font></Button>
@@ -44,17 +44,17 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="445.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
                             <children>
                                 <AnchorPane prefHeight="200.0" prefWidth="1200.0">
                                     <children>
-                                        <VBox alignment="CENTER" layoutX="-214.0" minWidth="-Infinity" prefHeight="208.0" prefWidth="1200.0" spacing="70.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <VBox alignment="CENTER" layoutX="-214.0" minWidth="-Infinity" prefHeight="435.0" prefWidth="1200.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                     <children>
-                                                        <HBox alignment="CENTER" layoutY="-7.0" prefHeight="50.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <HBox alignment="CENTER" layoutY="-7.0" minHeight="-Infinity" prefHeight="200.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                                                             <children>
-                                                                <Label fx:id="scramble" text="Scramble">
+                                                                <Label fx:id="scramble" text="Scramble" textAlignment="CENTER" wrapText="true">
                                                                     <font>
                                                                         <Font name="Consolas" size="25.0" />
                                                                     </font>
@@ -65,7 +65,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                     <children>
-                                                        <HBox alignment="CENTER" layoutX="-31.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <HBox alignment="CENTER" layoutX="-31.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                             <children>
                                                                 <Label fx:id="time" text="TIME " textAlignment="CENTER">
                                                                     <font>
@@ -78,9 +78,9 @@
                                                 </AnchorPane>
                                                 <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
                                                     <children>
-                                                        <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                                                             <children>
-                                                                <TableView fx:id="averages" focusTraversable="false" prefHeight="60.0" prefWidth="330.0" GridPane.halignment="CENTER">
+                                                                <TableView fx:id="averages" focusTraversable="false" minHeight="-Infinity" prefHeight="50.0" prefWidth="330.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                                     <columns>
                                                                         <TableColumn fx:id="ao5" prefWidth="100.0" text="ao 5 ">
 
@@ -109,9 +109,9 @@
                                                         </GridPane>
                                                     </children>
                                                 </AnchorPane>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                    <AnchorPane prefHeight="35.0" prefWidth="1200.0">
                                        <children>
-                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
                                              <children>
                                                 <Label fx:id="lifeBest" contentDisplay="CENTER" text="Lifetime Best ">
                                                    <font>

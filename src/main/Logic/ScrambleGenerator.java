@@ -91,7 +91,7 @@ public class ScrambleGenerator {
         String[] spec = {"2","'"," "};
         String last = "";
         Random r = new Random();
-        for(int i = 0; i < 41; i++){
+        for(int i = 0; i < 61; i++){
             String cur = turns[r.nextInt(12)];
             while (cur.equals(last))
                 cur = turns[r.nextInt(12)];

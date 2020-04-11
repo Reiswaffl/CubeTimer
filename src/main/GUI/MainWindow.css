@@ -103,3 +103,15 @@
     -fx-font-size: 12pt;
 }
 
+.menu-item{
+    -fx-background-color: #2f3542;
+}
+
+.menu-item .label{
+    -fx-text-fill: #1e90ff;
+}
+
+.context-menu{
+    -fx-background-color: #2f3542;
+
+}

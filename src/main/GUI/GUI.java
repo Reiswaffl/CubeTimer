@@ -11,8 +11,9 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class GUI extends Application {
-    private  Stage primaryStage;
+    public  Stage primaryStage;
     public Scene scene;
+    public AnchorPane pane;
 
     @Override
     public void start(Stage primaryStage){
@@ -22,7 +23,7 @@ public class GUI extends Application {
     public void mainWindow(){
         try {
             FXMLLoader loader = new FXMLLoader(GUI.class.getResource("MainWindow.fxml"));
-            AnchorPane pane = loader.load();
+            pane = loader.load();
             primaryStage.setMinHeight(100);
             primaryStage.setMinWidth(100);
             primaryStage.setTitle("Menü");
