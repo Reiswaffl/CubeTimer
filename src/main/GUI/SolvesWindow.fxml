@@ -4,34 +4,53 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchor" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.GUI.SolvesWindowController">
-   <children>
-      <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="730.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane fx:id="top" maxHeight="-Infinity" prefHeight="70.0" prefWidth="500.0">
-               <children>
-                  <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="400.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <Button alignment="TOP_RIGHT" layoutX="166.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="24.0" text="X" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" fx:id="xButton" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <Label fx:id="solvesLabel" alignment="CENTER" layoutX="173.0" layoutY="8.0" prefHeight="54.0" prefWidth="155.0" text="Solves" textAlignment="JUSTIFY">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="700.0" prefWidth="200.0">
-               <children>
-                  <ListView fx:id="solves" prefHeight="690.0" prefWidth="460.0" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
-               </children>
-            </AnchorPane>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane fx:id="anchor" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.GUI.SolvesWindowController">
+    <children>
+        <VBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="730.0" prefWidth="100.0"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <children>
+                <AnchorPane fx:id="top" maxHeight="-Infinity" prefHeight="70.0" prefWidth="500.0">
+                    <children>
+                        <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                              prefWidth="400.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                    <children>
+                                        <Button alignment="TOP_RIGHT" layoutX="166.0" mnemonicParsing="false"
+                                                onAction="#close" prefHeight="25.0" prefWidth="24.0" text="X"
+                                                AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="15.0"
+                                                AnchorPane.topAnchor="15.0" fx:id="xButton"/>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </HBox>
+                        <Label fx:id="solvesLabel" alignment="CENTER" layoutX="173.0" layoutY="8.0" prefHeight="54.0"
+                               prefWidth="155.0" text="Solves" textAlignment="JUSTIFY">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="700.0" prefWidth="200.0">
+                    <children>
+                        <ListView fx:id="solves" prefHeight="690.0" prefWidth="460.0" AnchorPane.bottomAnchor="-10.0"
+                                  AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+                                  AnchorPane.topAnchor="20.0">
+                            <contextMenu>
+                                <ContextMenu>
+                                    <items>
+                                        <MenuItem fx:id="delete" text="delete"/>
+                                    </items>
+                                </ContextMenu>
+                            </contextMenu>
+                        </ListView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

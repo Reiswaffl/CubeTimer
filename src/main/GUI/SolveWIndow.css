@@ -46,6 +46,32 @@
     -fx-text-fill: #2f3542;
     -fx-font-weight: bold;
     -fx-font-size: 25pt;
+}
 
+.menu-item{
+    -fx-background-color: #2f3542;
+}
 
+.menu-item .label{
+    -fx-text-fill: #1e90ff;
+}
+
+.context-menu{
+    -fx-background-color: #2f3542;
+
+}
+
+.scroll-bar{
+    -fx-background-color: #5352ed;
+    -fx-pref-width: 7pt;
+}
+
+.thumb{
+    -fx-background-color: #2f3542;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.0 0.15em;
 }
