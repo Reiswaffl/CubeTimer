@@ -4,6 +4,8 @@
 }
 .button{
     -fx-background-color: #5352ed;
+    -fx-border-color: #2f3542;
+    -fx-border-width: 0 3 3 0;
     -fx-text-fill: #2f3542;
     -fx-font-size: 14pt;
     -fx-font-weight: bold;

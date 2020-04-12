@@ -7,6 +7,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
@@ -15,6 +18,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import main.Logic.Logic;
 import main.Logic.Puzzles;
 import main.Logic.ScrambleGenerator;
@@ -32,6 +37,8 @@ import java.util.List;
 public class MainWindowController {
     final String format = "MMM dd yyyy - HH:mm:ss";
     public GUI gui;
+    public AnchorPane root;
+    public Stage stage;
     private int state;
     private long startTime;
     private List<Solve> times;
@@ -281,6 +288,27 @@ public class MainWindowController {
     public void close(){
         Platform.exit();
     }
+
+    @FXML
+    public void showSolves(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SolvesWindow.fxml"));
+            root =  loader.load();
+            stage = new Stage();
+            stage.setTitle("Solves");
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("SolveWindow.css").toExternalForm());
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
+            SolvesWindowController controller =
+                    loader.<SolvesWindowController>getController();
+            controller.initData(puzzleSelect.getValue().toString(),specSelect.getValue().toString(),this);
+            stage.show();
+            controller.start();
+        }catch (Exception e){}
+
+    }
+
     /**
      * state = 1: waiting to start solve (inspection)
      * state = 2: solving

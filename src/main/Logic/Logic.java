@@ -90,6 +90,8 @@ public class Logic {
             String path = reader.getPath(puzzle, spec);
             // get a list of solves
             List<Solve> list = CSVReader.readSolveForm(path);
+            if(size < 0)
+                return list;
             if(list.size() > size) {
                 list = list.subList(list.size() - size, list.size());
             }

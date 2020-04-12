@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<root>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><root>
     <puzzle spec="Standard" type="3x3x3">data/3x3x3Standard.csv</puzzle>
     <puzzle spec="Standard" type="2x2x2">data/2x2x2Standard.csv</puzzle>
-</root>
+<puzzle spec="" type="">data/nullnull.csv</puzzle><puzzle spec="" type="">data/nullnull.csv</puzzle><puzzle spec="" type="">data/nullnull.csv</puzzle><puzzle spec="" type="">data/nullnull.csv</puzzle></root>

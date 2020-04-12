@@ -1,0 +1,51 @@
+.root{
+    -fx-font-family: Consolas;
+}
+.button{
+    -fx-background-color: #5352ed;
+    -fx-border-color: #2f3542;
+    -fx-border-width: 0 3 3 0;
+    -fx-text-fill: #2f3542;
+    -fx-font-size: 14pt;
+    -fx-font-weight: bold;
+}
+#anchor {
+    -fx-background-color: #2f3542;
+}
+
+#top{
+    -fx-background-color: #5352ed;
+}
+
+ .list-cell:odd {
+    -fx-background-color: #747d8c;
+
+}
+
+.list-cell:even {
+    -fx-background-color: #57606f;
+
+}
+
+.list-view{
+    -fx-cell-size: 4;
+    -fx-border-style: none;
+    -fx-font-size: 12pt;
+    -fx-pref-height: 115;
+    -fx-background-color:#70a1ff;
+}
+
+.list-cell {
+    -fx-alignment: center;
+    -fx-text-fill: #2f3542;
+    -fx-border-color: #70a1ff;
+    -fx-border-radius: 1pt;
+}
+
+#solvesLabel{
+    -fx-text-fill: #2f3542;
+    -fx-font-weight: bold;
+    -fx-font-size: 25pt;
+
+
+}

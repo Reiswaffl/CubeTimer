@@ -34,6 +34,7 @@
                                 <ChoiceBox fx:id="specSelect" focusTraversable="false" onInputMethodTextChanged="#update" prefWidth="150.0" value="Standard">
                                     <String fx:value="Standard" />
                                 </ChoiceBox>
+                        <Button mnemonicParsing="false" onAction="#showSolves" text="Show solves " />
                             </children>
                         </HBox>
                   <Button focusTraversable="false" layoutX="1134.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" text="X" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
