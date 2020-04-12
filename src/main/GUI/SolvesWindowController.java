@@ -28,6 +28,7 @@ public class SolvesWindowController {
     @FXML
     private MenuItem delete;
 
+
     @FXML
     public void close() {
         Stage stage = (Stage) xButton.getScene().getWindow();

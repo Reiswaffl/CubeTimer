@@ -5,6 +5,7 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -297,7 +298,7 @@ public class MainWindowController {
             stage = new Stage();
             stage.setTitle("Solves");
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("SolveWindow.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("MainWindow.css").toExternalForm());
             stage.setScene(scene);
             stage.initStyle(StageStyle.UNDECORATED);
             SolvesWindowController controller =
@@ -305,7 +306,9 @@ public class MainWindowController {
             controller.initData(puzzleSelect.getValue().toString(),specSelect.getValue().toString(),this);
             stage.show();
             controller.start();
-        }catch (Exception e){}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
