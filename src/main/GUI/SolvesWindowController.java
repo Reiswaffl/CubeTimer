@@ -71,7 +71,19 @@ public class SolvesWindowController {
 
     private void update() {
         list = Logic.listTimes(puzzle, spec, -1);
-        System.out.println(list.size());
+        List<String> show = new LinkedList<>();
+        if (list != null) {
+            Collections.reverse(list);
+            for (Solve solve : list) {
+                show.add(solve.getSolveTime() + " : " + solve.getDate());
+            }
+            solves.getItems().setAll(show);
+        }
+    }
+
+    @FXML
+    public void sort() {
+        list = Logic.sortTimes(puzzle, spec);
         List<String> show = new LinkedList<>();
         if (list != null) {
             Collections.reverse(list);

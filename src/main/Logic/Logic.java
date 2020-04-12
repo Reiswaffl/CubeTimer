@@ -4,12 +4,15 @@ import main.dataInterfaces.CSVReader;
 import main.dataInterfaces.XMLReader;
 import main.dataTransfer.Solve;
 import org.xml.sax.SAXException;
+import sun.awt.image.ImageWatched;
 
 import javax.sound.midi.Soundbank;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Logic {
 
@@ -151,5 +154,35 @@ public class Logic {
             e.printStackTrace();
         }
         return "0";
+    }
+
+    public static List<Solve> sortTimes(String puzzle, String spec){
+        try {
+            XMLReader reader = new XMLReader();
+            reader.update();
+            String path = reader.getPath(puzzle, spec);
+            // get a list of solves
+            List<Solve> list = CSVReader.readSolveForm(path);
+            for (Solve s : list) {
+                // get the Times into the right format and make them able to be seen as double
+                String cur = s.getSolveTime().replace(":", ".");
+                String[] curArr = cur.split("\\.");
+                if (curArr.length > 2)
+                    cur = (Integer.toString((Integer.parseInt(curArr[0]) * 60 + Integer.parseInt(curArr[1]))) + "." + curArr[2]);
+                s.setSolveTime(cur);
+            }
+
+            List<Solve> ret = list.stream().sorted((s1,s2) -> (int)((Double.parseDouble(s2.getSolveTime())- Double.parseDouble(s1.getSolveTime()))*100)).collect(Collectors.toList());
+            for(Solve s : ret){
+                double  time = Double.parseDouble(s.getSolveTime());
+                if (time  >= 60.0)
+                    s.setSolveTime (((int) time / 60) + ":" + ((int) time % 60) + "." + (Math.round((int) (time * 100.0) % 100.0)));
+                else
+                    s.setSolveTime(((int) time % 60) + "." + (Math.round((int) (time * 100.0) % 100.0)));
+            }
+            return ret;
+        }catch (Exception e){
+            return new LinkedList<>();
+        }
     }
 }
